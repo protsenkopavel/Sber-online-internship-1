@@ -1,7 +1,7 @@
 package net.protsenko;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,8 +12,8 @@ public class Main {
         List<City> cityDirectory = new ArrayList<>();
         Logger logger = Logger.getLogger("net.protsenko");
 
-        File file = new File("src/main/resources/listOfCities.csv");
-        try (Scanner scanner = new Scanner(file)) {
+        try (InputStream inputStream = Main.class.getResourceAsStream("/listOfCities.csv");
+             Scanner scanner = new Scanner(inputStream)) {
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -39,7 +39,7 @@ public class Main {
                 cityDirectory.add(city);
             }
 
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             logger.warning("File not found: " + e.getMessage());
         }
 
