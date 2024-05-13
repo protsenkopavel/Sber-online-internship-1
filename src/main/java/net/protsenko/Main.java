@@ -43,8 +43,13 @@ public class Main {
             logger.warning("File not found: " + e.getMessage());
         }
 
-        for (City city : cityDirectory) {
-            System.out.println(city);
-        }
+        System.out.println("-------------------------------");
+        System.out.println("-------------------------------");
+        Sort.sortByCityDsc(cityDirectory);
+        System.out.println("-------------------------------");
+        System.out.println("-------------------------------");
+        Sort.sortByDistrictAndCityDsc(cityDirectory);
+        System.out.println("-------------------------------");
+        System.out.println("-------------------------------");
     }
 }
