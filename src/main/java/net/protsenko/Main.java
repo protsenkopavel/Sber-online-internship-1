@@ -43,13 +43,29 @@ public class Main {
             logger.warning("File not found: " + e.getMessage());
         }
 
-        System.out.println("-------------------------------");
-        System.out.println("-------------------------------");
-        Sort.sortByCityDsc(cityDirectory);
-        System.out.println("-------------------------------");
-        System.out.println("-------------------------------");
-        Sort.sortByDistrictAndCityDsc(cityDirectory);
-        System.out.println("-------------------------------");
-        System.out.println("-------------------------------");
+//        System.out.println("-------------------------------");
+//        System.out.println("-------------------------------");
+//        Sort.sortByCityDsc(cityDirectory);
+//        System.out.println("-------------------------------");
+//        System.out.println("-------------------------------");
+//        Sort.sortByDistrictAndCityDsc(cityDirectory);
+//        System.out.println("-------------------------------");
+//        System.out.println("-------------------------------");
+
+        City[] cityArray = cityDirectory.toArray(new City[0]);
+        int index = 0;
+        int maxPopulation = 0;
+
+        for (int i = 0; i < cityArray.length; i++) {
+            int population = cityArray[i].getPopulation();
+
+            if (population > maxPopulation) {
+                maxPopulation = population;
+                index = i;
+            }
+        }
+        System.out.println("Наибольшее количество жителей (" + maxPopulation +
+                ") в городе " + cityArray[index].getName() +
+                " [" + index + "]");
     }
 }

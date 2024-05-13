@@ -62,6 +62,10 @@ public class City {
         return district;
     }
 
+    public Integer getPopulation() {
+        return population;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
