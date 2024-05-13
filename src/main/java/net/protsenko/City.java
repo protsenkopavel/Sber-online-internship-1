@@ -66,6 +66,10 @@ public class City {
         return population;
     }
 
+    public String getRegion() {
+        return region;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -2,9 +2,7 @@ package net.protsenko;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.logging.Logger;
 
 public class Main {
@@ -52,20 +50,31 @@ public class Main {
 //        System.out.println("-------------------------------");
 //        System.out.println("-------------------------------");
 
-        City[] cityArray = cityDirectory.toArray(new City[0]);
-        int index = 0;
-        int maxPopulation = 0;
+//        City[] cityArray = cityDirectory.toArray(new City[0]);
+//        int index = 0;
+//        int maxPopulation = 0;
+//
+//        for (int i = 0; i < cityArray.length; i++) {
+//            int population = cityArray[i].getPopulation();
+//
+//            if (population > maxPopulation) {
+//                maxPopulation = population;
+//                index = i;
+//            }
+//        }
+//        System.out.println("[" + index + "] = " + maxPopulation);
 
-        for (int i = 0; i < cityArray.length; i++) {
-            int population = cityArray[i].getPopulation();
+        Map<String, Integer> citiesByRegion = new HashMap<>();
 
-            if (population > maxPopulation) {
-                maxPopulation = population;
-                index = i;
-            }
+        for (City city : cityDirectory) {
+            String region = city.getRegion();
+            citiesByRegion.put(region, citiesByRegion.getOrDefault(region, 0) + 1);
         }
-        System.out.println("Наибольшее количество жителей (" + maxPopulation +
-                ") в городе " + cityArray[index].getName() +
-                " [" + index + "]");
+
+        for (Map.Entry<String, Integer> entry : citiesByRegion.entrySet()) {
+            String region = entry.getKey();
+            Integer count = entry.getValue();
+            System.out.println(region + " - " + count);
+        }
     }
 }
